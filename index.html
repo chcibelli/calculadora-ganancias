@@ -1,104 +1,144 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
-    <head>
-        <title>Calculadora de Impuesto a las ganancias</title>
- 
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- 
-        <meta http-equiv="Content-Language" content="es" />
-    </head>
-    <body>
-        <div class="cont600 l">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-            <script type="text/javascript" src="ganancias.min.js?v=20160219091211111111"></script>
- 
-            <style>
-                .notaCalculadora {margin-top: 60px;}
-                .notaCalculadora h1 {font-family: 'Droid Serif'; color: #333;font-size: 36px;letter-spacing: -0.05em; font-weight: bold;line-height: 42px;           }
-                .notaCalculadora p {font-family: "Roboto", Arial, helvetica, clean, sans-serif;color: #333; font-size: 16px;font-weight: normal;  margin: 10px auto;}
-                small {  clear: both;  color: #777; display: block;}
-                .spacer { height: 20px;}
-                .line {border-bottom: solid 1px gray; }
-                .pad {  width: 260px;font-size: 12px;  color: gray; padding-left: 9px;  margin: 4px 0; }
-                .boxLeft {width: 285px;height: 881px;border-right: 1px solid #ccc;float: left; margin-right: 10px; padding-right: 6px;                }
-                .boxRight {  width: 256px;float: left;overflow: hidden;}
-                .calculadoraBox {
-                    width: 560px;
+	<head>
+		<title>Calculadora de Impuesto a las ganancias</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+		<meta http-equiv="Content-Language" content="es" />
+	</head>
+	<body>
+		<div class="cont600 l">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+			<script type="text/javascript" src="ganancias.min.js?v=20160219091211111111"></script>
+
+			<style>
+				.notaCalculadora {
+					margin-top: 60px;
+				}
+				.notaCalculadora h1 {
+					font-family: 'Droid Serif';
+					color: #333;
+					font-size: 36px;
+					letter-spacing: -0.05em;
+					font-weight: bold;
+					line-height: 42px;
+				}
+				.notaCalculadora p {
+					font-family: "Roboto", Arial, helvetica, clean, sans-serif;
+					color: #333;
+					font-size: 16px;
+					font-weight: normal;
+					margin: 10px auto;
+				}
+				small {
+					clear: both;
+					color: #777;
+					display: block;
+				}
+				.spacer {
+					height: 20px;
+				}
+				.line {
+					border-bottom: solid 1px gray;
+				}
+				.pad {
+					width: 260px;
+					font-size: 12px;
+					color: gray;
+					padding-left: 9px;
+					margin: 4px 0;
+				}
+				.boxLeft {
+					width: 285px;
+					height: 881px;
+					border-right: 1px solid #ccc;
+					float: left;
+					margin-right: 10px;
+					padding-right: 6px;
+				}
+				.boxRight {
+					width: 256px;
+					float: left;
+					overflow: hidden;
+				}
+				.calculadoraBox {
+					width: 560px;
 					height: 770px;
-                    font-size: 13px;
-                    background: #F2F2F2;
-                    border: 1px solid #d8d8d8;
-                    font-family: "Roboto", Arial, helvetica, sans-serif;
-                    overflow: hidden;
-                    margin-top: 25px;
-                    padding: 10px;
-                }
-                .calculadoraBox .box {
-                    padding-bottom: 13px;
-                    border-bottom: 1px dotted #ccc;
-                    margin: 13px 9px;
-                }
-                .calculadoraBox .box {
-                    padding-bottom: 13px;
-                    border-bottom: 1px dotted #ccc;
-                    margin: 13px 9px;
-                }
-                .calculadoraBox .box.check {
-                    border: 0 none;
-                    clear: both;
-                    overflow: hidden;
-                }
-                .calculadoraBox .box.check .label {
-                    width: 230px;
-                    display: block;
-                    float: left;
+					font-size: 13px;
+					background: #F2F2F2;
+					border: 1px solid #d8d8d8;
+					font-family: "Roboto", Arial, helvetica, sans-serif;
+					overflow: hidden;
+					margin-top: 25px;
+					padding: 10px;
+				}
+				.calculadoraBox .box {
+					padding-bottom: 13px;
+					border-bottom: 1px dotted #ccc;
+					margin: 13px 9px;
+				}
+				.calculadoraBox .box {
+					padding-bottom: 13px;
+					border-bottom: 1px dotted #ccc;
+					margin: 13px 9px;
+				}
+				.calculadoraBox .box.check {
+					border: 0 none;
+					clear: both;
+					overflow: hidden;
+				}
+				.calculadoraBox .box.check .label {
+					width: 230px;
+					display: block;
+					float: left;
 					font-size: 14px;
-                    line-height: 21px;
-                }
-                .calculadoraBox .box.check > input {
-                    float: left;
-                    margin-top: 2px;
-                    display: inline;
-                    width: 18px;
-                    height: 16px;
-                }
-                .calculadoraBox .box p {
-                    width: 250px;
-                    color: #666;
-                    font-size: 15px;
-                    margin: 0;
-                    font-weight: 700;
-                }
-                .calculadoraBox .box input {
-                    margin: 8px 0;
-                    padding: 6px;
-                    width: 250px
-                }
-                .calculadoraBox .box.resultados {
-                    border: 0 none;
-                }
-                .calculadoraBox .box.resultados p {
-                    font-size: 15px;
-                    font-weight: 700;
-                    line-height: 18px;
-                    margin: 16px 0;
-                }
-                .calculadoraBox .box.resultados em {
-                    font-size: 12px;
-                }
-                .calculadoraBox .box.resultados span {
-                    width: 218px;
-                    background: #fff;
-                    color: #D80A38;
-                    display: inline-flex;
-                    font-size: 23px;
-                    font-weight: 700;
-                    padding: 9px;
-                }
-                .calculadoraBox .box.resultados span.neto {
-                    color: #444;
-                }
-              .calculadoraBox .button {
+					line-height: 21px;
+				}
+				.calculadoraBox .box.check > input {
+					float: left;
+					margin-top: 2px;
+					display: inline;
+					width: 18px;
+					height: 16px;
+				}
+				.calculadoraBox .box p {
+					width: 250px;
+					color: #666;
+					font-size: 15px;
+					margin: 0;
+					font-weight: 700;
+				}
+				.calculadoraBox .box input {
+					margin: 8px 0;
+					padding: 6px;
+					width: 250px
+				}
+				.calculadoraBox .box.resultados {
+					border: 0 none;
+				}
+				.calculadoraBox .box.resultados p {
+					font-size: 15px;
+					font-weight: 700;
+					line-height: 18px;
+					margin: 16px 0;
+				}
+				.calculadoraBox .box.resultados em {
+					font-size: 12px;
+				}
+				.calculadoraBox .box.resultados span {
+					width: 218px;
+					background: #fff;
+					color: #D80A38;
+					display: inline-flex;
+					font-size: 23px;
+					font-weight: 700;
+					padding: 9px;
+				}
+				.calculadoraBox .box.resultados span.neto {
+					color: #444;
+				}
+				.calculadoraBox .button {
 					background: #444;
 					border-radius: 21px;
 					color: #fff;
@@ -113,119 +153,137 @@
 					height: 34px;
 					line-height: 35px;
 				}
-                .calculadoraBox .button:hover {
-                    background-color: #d02128;
-                }
-                .calculadoraBox select.pad {
-                    margin: 10px 0;
-                    padding: 6px;
-                }
-				
+				.calculadoraBox .button:hover {
+					background-color: #d02128;
+				}
+				.calculadoraBox select.pad {
+					margin: 10px 0;
+					padding: 6px;
+				}
+
 				.calculadoraBox .box.resultados .ig-2016 {
 					border: 1px solid #db464c;
 					margin: 13px 0;
-					padding:12px 15px;
+					padding: 12px 15px;
 					background: #db464c;
-}
-			.calculadoraBox .box.resultados .ig-2016 span {width:183px;color:#db464c}
-			.calculadoraBox .box .ig-2016 p {font-size: 19px;    width: 170px;    color: #f2f2f2;}
-			.calculadoraBox .box.resultados .ig-2016 span.neto {color:#db464c}
-			.calculadoraBox .box.resultados .ig-2016 p {font-size:19px}
-			.calculadoraBox .box.resultados .dif.ig-2016  span{ background: none;    color: #fff;}
-            </style>
-            <div class="calculadoraBox">
-                <div class="boxLeft">
-                    <div class="box">
-                        <input value="" type="text" placeholder="ÚLTIMO INGRESO MENSUAL BRUTO EN PESOS" id="sueldo2015" size="40">
-                        <p>
-                            El sueldo máximo sin considerar aguinaldo
-                        </p>
-                    </div>
-                    <div class="box">
-                        <input value="" type="text" placeholder="INGRESO MENSUAL BRUTO 2013 EN PESOS" id="sueldo2013" size="40">
-                        <p>
-                            El sueldo máximo entre Enero y Agosto sin considerar aguinaldo
-                        </p>
-                    </div>
-                    <div class="box">
-                        <p class="label">
-                            ESTADO CIVIL
-                        </p>
-                        <select class="pad" id="estado_civil" "="">
-                        <option value="0" selected="selected">Soltero/a</option>
-                        <option value="1">Casado/a</option>
-                        </select>
-                        <small>Cónyuge sin ingresos</small>
-                        </div>
-                        <div class="box">
-                        <p class="label">HIJOS</p>
-                        <input class="pad" type="number" min="0" max="15" value="0" id="qhijos">
-                        <small>Menores a 24 años</small>
-                        </div>
-                        <div class="box">
-                        <p class="label">FAMILIARES A CARGO</p>
-                        <input class="pad" type="number" min="0" max="15" value="0" id="qacargo">
-                        <small>Abuelo, Padre, Madre, Hermanos</small>
-                        </div>
-                        <div class="contenBox">
-                        <div class="box check" style="display:none">
-                        <p class="label l">RESIDENTE EN LA PATAGONIA</p>
-                        <input class="l" type="checkbox" value="1" id="patagonia">
-                        </div>
- 
-                        <div class="box check">
-                        <p class="label">AUTONOMO</p>
-                        <input type="checkbox" value="1" id="autonomo">
-                        </div>
-                        </div>
-						 <a class="button" id="calcular-btn">CALCULAR</a>
-                        </div>
-                        <div class="boxRight">
-                       
-                        <div class="box resultados">
-                        <p style="display:none">
-                        APORTES
-                        <br>
-                        <em>(JUBILACION Y OBRA SOCIAL):</em>
-                        </p>
-                        <span style="display:none" id="aportes">$</span>
- 
-                        <p>
-                            IMPUESTO A LAS GANANCIAS ANTERIOR:
-                        </p>
-                        <span id="impuesto_2015">$</span>
+				}
+				.calculadoraBox .box.resultados .ig-2016 span {
+					width: 183px;
+					color: #db464c
+				}
+				.calculadoraBox .box .ig-2016 p {
+					font-size: 19px;
+					width: 170px;
+					color: #f2f2f2;
+				}
+				.calculadoraBox .box.resultados .ig-2016 span.neto {
+					color: #db464c
+				}
+				.calculadoraBox .box.resultados .ig-2016 p {
+					font-size: 19px
+				}
+				.calculadoraBox .box.resultados .dif.ig-2016  span {
+					background: none;
+					color: #fff;
+				}
+			</style>
+			<div class="calculadoraBox">
+				<div class="boxLeft">
+					<div class="box">
+						<input value="" type="text" placeholder="ÚLTIMO INGRESO MENSUAL BRUTO EN PESOS" id="sueldo2015" size="40">
+						<p>
+							El sueldo máximo sin considerar aguinaldo
+						</p>
+					</div>
+					<div class="box">
+						<input value="" type="text" placeholder="INGRESO MENSUAL BRUTO 2013 EN PESOS" id="sueldo2013" size="40">
+						<p>
+							El sueldo máximo entre Enero y Agosto sin considerar aguinaldo
+						</p>
+					</div>
+					<div class="box">
+						<p class="label">
+							ESTADO CIVIL
+						</p>
+						<select class="pad" id="estado_civil" "="">
+						<option value="0" selected="selected">Soltero/a</option>
+						<option value="1">Casado/a</option>
+						</select>
+						<small>Cónyuge sin ingresos</small>
+						</div>
+						<div class="box">
+						<p class="label">HIJOS</p>
+						<input class="pad" type="number" min="0" max="15" value="0" id="qhijos">
+						<small>Menores a 24 años</small>
+						</div>
+						<div class="box">
+						<p class="label">FAMILIARES A CARGO</p>
+						<input class="pad" type="number" min="0" max="15" value="0" id="qacargo">
+						<small>Abuelo, Padre, Madre, Hermanos</small>
+						</div>
+						<div class="contenBox">
+						<div class="box check" style="display:none">
+						<p class="label l">RESIDENTE EN LA PATAGONIA</p>
+						<input class="l" type="checkbox" value="1" id="patagonia">
+						</div>
+
+						<div class="box check">
+						<p class="label">AUTONOMO</p>
+						<input type="checkbox" value="1" id="autonomo">
+						</div>
+						</div>
+						<a class="button" id="calcular-btn">CALCULAR</a>
+						</div>
+						<div class="boxRight">
+
+						<div class="box resultados">
+						<p style="display:none">
+						APORTES
+						<br>
+						<em>(JUBILACION Y OBRA SOCIAL):</em>
+						</p>
+						<span style="display:none" id="aportes">$</span>
+
+						<p>
+						IMPUESTO A LAS GANANCIAS ANTERIOR:
+						</p>
+						<span id="impuesto_2015">$</span>
 						<div class="box-2015">
-							<p>
-								SUELDO NETO ANTERIOR:
-							</p>
-							<span class="neto" id="sueldo_neto_2015">$</span>
-					    </div>
-                       <div class="ig-2016">
-						   <p>
-								IMPUESTO A LAS GANANCIAS 2016:
-							</p>
-							<span id="impuesto_2016">$</span>
+						<p>
+						SUELDO NETO ANTERIOR:
+						</p>
+						<span class="neto" id="sueldo_neto_2015">$</span>
+						</div>
+						<div class="ig-2016">
+						<p>
+						IMPUESTO A LAS GANANCIAS 2016:
+						</p>
+						<span id="impuesto_2016">$</span>
 						</div>
 						<div class="box-2016 ig-2016">
-							<p>
-								SUELDO NETO 2016:
-							</p>
-							<span class="neto" id="sueldo_neto_2016">$</span>
-                        </div> 
-                       
+						<p>
+						SUELDO NETO 2016:
+						</p>
+						<span class="neto" id="sueldo_neto_2016">$</span>
+						</div>
+
 						<div class="dif ig-2016">
-						   <p id="diferencia_resultado">
+							<p id="diferencia_resultado">
 								DIFERENCIA:
 							</p>
 							<span class="neto" id="diferencia">$</span>
-                         </div>
-                	<small>Todos los calculos y resultados son estimativos. No puedo garantizar la exactitud de los mismos. El objetivo es tener valores de referencia.</small>
-			<small><a href="http://twitter.com/chcibelli">@chcibelli</a></small> 
+						</div>
+						<p>
+							<small>Todos los calculos y resultados son estimativos. No puedo garantizar la exactitud de los mismos. El objetivo es tener valores de referencia.</small>
+						</p>
+						<p>
+							<small><a href="http://twitter.com/chcibelli">@chcibelli</a></small>
+						</p>
+					</div>
+
+				</div>
+			</div>
+
 		</div>
- 
-                </div>
-            </div>
- 
-        </div>
-    </body>
+	</body>
 </html>
