@@ -15,24 +15,21 @@ $(function() {
 			calculaIIGG();
 			calculaIIGG2016();
 
-			diferencia = Math.round(sn2016 - sn2015);
+			var diferencia = Math.round(sn2016 - sn2015);
+			var diferenciap = Math.round((sn2015*100)/sn2016)-100;
+			if(diferenciap <0) {
+				diferenciap = diferenciap*-1;
+			}
 			
-			console.log('sueldo neto 15 -> ' + sn2015);
-			console.log('sueldo neto 16 -> ' + sn2016);
-
-			if (diferencia > 0) {
-				$('#diferencia_resultado').html('TU SUELDO NETO: ');
-				$('#diferencia').html("+ $ " + diferencia);
+			if(sn2015 < sn2016) {
+				diferenciap = "+ " + diferenciap;
+			} else {
+				diferenciap = "- " + diferenciap;				
 			}
+									
+			$('#diferencia_resultado').html('DIFERENCIA: ');
+			$('#diferencia').html("$ " + diferencia + " (" + diferenciap + "%)");
 
-			if (diferencia < 0) {
-				$('#diferencia_resultado').html('TU SUELDO NETO: ');
-				$('#diferencia').html(" - $ " + diferencia);
-			}
-
-			if (diferencia == 0) {
-				$('#diferencia_resultado').html('TU SUELDO NO TIENE CAMBIOS: ');
-			}
 
 		} else {
 			alert("Ingresá tu sueldo bruto mensual en Pesos Argentinos para ambos periodos");
@@ -133,7 +130,7 @@ $(function() {
 
 		sn = Math.round(sb15 - ayc - impuesto);
 
-		$('#impuesto_2016').html("$ " + impuesto);
+		$('#impuesto_2016').html("$ -" + impuesto);
 		$('#aportes').html("$ " + ayc);
 		$('#sueldo_neto_2016').html("$ " + sn);
 
@@ -162,6 +159,9 @@ $(function() {
 			sn = Math.round(sb15 - ayc);
 			$('#impuesto_2015').html("$ " + 0);
 			$('#sueldo_neto_2015').html("$ " + sn);
+			
+			sn2015 = sn;
+			impuesto2015 = 0;
 
 			return true;
 
@@ -173,6 +173,9 @@ $(function() {
 				$('#impuesto_2015').html("$ " + 0);
 				$('#sueldo_neto_2015').html("$ " + sn);
 				return false;
+
+				sn2015 = sn;
+				impuesto2015 = 0;
 
 			}
 
