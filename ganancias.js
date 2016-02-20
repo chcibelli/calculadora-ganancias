@@ -133,8 +133,8 @@ $(function() {
 
 		sn = Math.round(sb15 - ayc - impuesto);
 
-		$('#impuesto_2016').html("$ -" + impuesto);
-		$('#aportes').html("$ -" + ayc);
+		$('#impuesto_2016').html("$ " + impuesto);
+		$('#aportes').html("$ " + ayc);
 		$('#sueldo_neto_2016').html("$ " + sn);
 
 		impuesto2016 = impuesto;
