@@ -65,7 +65,6 @@ $(function() {
 		}
 
 		if (nopaga) {
-
 			sn = Math.round(sb15 - ayc);
 			$('#aportes').html("$ -" + ayc);
 			$('#impuesto_2016').html("$ " + 0);
@@ -75,7 +74,6 @@ $(function() {
 			sn2016 = sn;
 			
 			return false;
-
 		}
 
 		sn = Math.round(sb15 - ayc);
