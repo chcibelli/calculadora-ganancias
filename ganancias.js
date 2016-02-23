@@ -16,20 +16,19 @@ $(function() {
 			calculaIIGG2016();
 
 			var diferencia = Math.round(sn2016 - sn2015);
-			var diferenciap = Math.round((sn2015*100)/sn2016)-100;
-			if(diferenciap <0) {
-				diferenciap = diferenciap*-1;
+			var diferenciap = Math.round((sn2015 * 100) / sn2016) - 100;
+			if (diferenciap < 0) {
+				diferenciap = diferenciap * -1;
 			}
-			
-			if(sn2015 < sn2016) {
+
+			if (sn2015 < sn2016) {
 				diferenciap = "+ " + diferenciap;
 			} else {
-				diferenciap = "- " + diferenciap;				
+				diferenciap = "- " + diferenciap;
 			}
-									
+
 			$('#diferencia_resultado').html('DIFERENCIA: ');
 			$('#diferencia').html("$ " + diferencia + " (" + diferenciap + "%)");
-
 
 		} else {
 			alert("Ingresá tu sueldo bruto mensual en Pesos Argentinos para ambos periodos");
@@ -56,12 +55,17 @@ $(function() {
 		var qHijos = $('#qhijos').val();
 		var qAcargo = $('#qacargo').val();
 
-		if (sb15 <= 30000 && (isCasado)) {
-			var nopaga = true;
-		}
+		if (sb15 <= 18800) {
+			nopaga = true;
+			console.log('menor a 18800');
+		} else {
 
-		if (sb15 <= 18800 && !(isCasado)) {
-			var nopaga = true;
+			if (sb15 <= 30000) {
+				if (isCasado == 1) {
+					nopaga = true;
+					console.log('menor a 30000 pero casado');				
+				}
+			}
 		}
 
 		if (nopaga) {
@@ -69,15 +73,14 @@ $(function() {
 			$('#aportes').html("$ -" + ayc);
 			$('#impuesto_2016').html("$ " + 0);
 			$('#sueldo_neto_2016').html("$ " + sn);
-			
+
 			impuesto2016 = 0;
 			sn2016 = sn;
-			
+
 			return false;
 		}
 
 		sn = Math.round(sb15 - ayc);
-
 
 		var escalas = [15000, 18000, 21000, 22000, 23000, 24000, 25000];
 		var gnia = [0, 833.33, 1666.67, 2500, 5000, 7500, 10000];
@@ -167,7 +170,7 @@ $(function() {
 			sn = Math.round(sb15 - ayc);
 			$('#impuesto_2015').html("$ " + 0);
 			$('#sueldo_neto_2015').html("$ " + sn);
-			
+
 			sn2015 = sn;
 			impuesto2015 = 0;
 
@@ -204,8 +207,8 @@ $(function() {
 				var hijos = [1080, 1036.80, 993.60, 950.40, 928.80, 907.20, 720];
 				var cargas = [810, 777, 60, 745.20, 712.80, 696.60, 680.40, 540];
 				var despecial = [9331.20, 8957.25, 8584.70, 8211.46, 8024.83, 7838.21, 6220, 80];
-			} 
-			
+			}
+
 			for (var i = 0; i < escalas.length; i++) {
 				if (sb13 >= escalas[escalas.length - 1]) {
 					var index = escalas.length - 1;
