@@ -44,6 +44,7 @@ $(function() {
 		var impuesto = 0;
 		var patagonia = $('#patagonia').is(':checked');
 		var autonomo = $('#autonomo').is(':checked');
+		var nopaga = false;
 
 		if (sb15 <= topeAportes) {
 			ayc = Math.round((sb15 * 0.11) + (sb15 * 0.06));
@@ -51,7 +52,19 @@ $(function() {
 			ayc = Math.round((topeAportes * 0.11) + (topeAportes * 0.06));
 		}
 
-		if (sb15 <= 30000) {
+		var isCasado = $('#estado_civil').val();
+		var qHijos = $('#qhijos').val();
+		var qAcargo = $('#qacargo').val();
+
+		if (sb15 <= 30000 && (isCasado)) {
+			var nopaga = true;
+		}
+
+		if (sb15 <= 18500 && !(isCasado)) {
+			var nopaga = true;
+		}
+
+		if (nopaga) {
 
 			sn = Math.round(sb15 - ayc);
 			$('#aportes').html("$ -" + ayc);
@@ -67,9 +80,6 @@ $(function() {
 
 		sn = Math.round(sb15 - ayc);
 
-		var isCasado = $('#estado_civil').val();
-		var qHijos = $('#qhijos').val();
-		var qAcargo = $('#qacargo').val();
 
 		var escalas = [15000, 18000, 21000, 22000, 23000, 24000, 25000];
 		var gnia = [0, 833.33, 1666.67, 2500, 5000, 7500, 10000];
